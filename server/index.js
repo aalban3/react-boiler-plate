@@ -1,14 +1,17 @@
 const { db } = require("./db");
-const app = require("./app");
 const PORT = process.env.PORT || 8080;
+const app = require("./app");
 
-db.sync() // if you update your db schemas, make sure you drop the tables first and then recreate them
-  .then(() => {
-    console.log("db synced");
+const init = async () => {
+  try {
+    await db.sync();
+    // start listening (and create a 'server' object representing our server)
     app.listen(PORT, () =>
-      console.log(`Express server listening at http://localhost:${PORT}`)
+      console.log(`Listening at http://localhost:${PORT}`)
     );
-  })
-  .catch((err) => {
-    throw err;
-  });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+init();
