@@ -8,4 +8,7 @@ db.sync() // if you update your db schemas, make sure you drop the tables first 
     app.listen(PORT, () =>
       console.log(`Express server listening at http://localhost:${PORT}`)
     );
+  })
+  .catch((err) => {
+    throw err;
   });
