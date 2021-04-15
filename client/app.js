@@ -1,9 +1,12 @@
 import React from "react";
+import NavBar from "./components/Nav";
+import Routes from "./routes";
 
 const App = () => {
   return (
     <div>
-      <p>Hello World!</p>
+      <NavBar />
+      <Routes />
     </div>
   );
 };
